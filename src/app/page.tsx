@@ -113,169 +113,74 @@ export default function Home() {
     return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
   };
 
-  // Mac OS 8-9 inspired button
-  const Button = ({ children, onClick, disabled, primary, style = {} }: any) => (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      style={{
-        ...style,
-        background: primary 
-          ? 'linear-gradient(180deg, #0000ba 0%, #000078 100%)'
-          : 'linear-gradient(180deg, #dfdfdf 0%, #a0a0a0 100%)',
-        color: primary ? '#fff' : '#000',
-        border: '1px solid',
-        borderColor: '#fff #808080 #808080 #fff',
-        boxShadow: primary ? 'none' : '1px 1px 0 #808080, -1px -1px 0 #dfdfdf',
-        padding: '4px 16px',
-        fontSize: '12px',
-        fontFamily: 'Geneva, Chicago, sans-serif',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1,
-        borderRadius: '4px',
-      }}
-    >
-      {children}
-    </button>
-  );
-
-  // Mac OS 8-9 window
-  const Window = ({ children, title, style = {} }: any) => (
-    <div style={{
-      ...style,
-      background: '#c0c0c0',
-      border: '2px solid',
-      borderColor: '#dfdfdf #404040 #404040 #dfdfdf',
-      boxShadow: '1px 1px 0 #808080',
-      fontFamily: 'Geneva, Chicago, sans-serif',
-    }}>
-      {/* Title bar */}
-      <div style={{
-        background: 'linear-gradient(180deg, #000080 0%, #0000a8 100%)',
-        padding: '2px 4px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '4px',
-      }}>
-        <span style={{
-          width: '12px',
-          height: '12px',
-          background: 'linear-gradient(135deg, #ff6b6b 0%, #c0392b 50%, #ff6b6b 100%)',
-          borderRadius: '50%',
-          display: 'inline-block',
-          border: '1px solid #fff',
-        }} />
-        <span style={{
-          width: '12px',
-          height: '12px',
-          background: 'linear-gradient(135deg, #ffd93d 0%, #f39c12 50%, #ffd93d 100%)',
-          borderRadius: '50%',
-          display: 'inline-block',
-          border: '1px solid #fff',
-        }} />
-        <span style={{
-          width: '12px',
-          height: '12px',
-          background: 'linear-gradient(135deg, #6bcb77 0%, #27ae60 50%, #6bcb77 100%)',
-          borderRadius: '50%',
-          display: 'inline-block',
-          border: '1px solid #fff',
-        }} />
-        <span style={{
-          color: '#fff',
-          fontSize: '11px',
-          fontWeight: 'bold',
-          marginLeft: '4px',
-          textShadow: '1px 1px 0 #000',
-        }}>
-          {title}
-        </span>
-      </div>
-      {/* Content */}
-      <div style={{ padding: '8px' }}>
-        {children}
-      </div>
-    </div>
-  );
-
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#008080',
-      padding: '20px',
-      fontFamily: 'Geneva, Chicago, sans-serif',
-      fontSize: '12px',
+      background: 'linear-gradient(180deg, #1e3a5f 0%, #0d1b2a 100%)',
+      padding: '24px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
+      fontSize: '13px',
+      color: '#fff',
     }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         
-        {/* Header */}
+        {/* Header - Modern Mac style */}
         <div style={{
-          background: '#c0c0c0',
-          border: '2px solid',
-          borderColor: '#dfdfdf #404040 #404040 #dfdfdf',
-          padding: '2px',
-          marginBottom: '16px',
+          background: 'rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '16px',
+          padding: '24px',
+          marginBottom: '20px',
+          border: '1px solid rgba(255,255,255,0.1)',
         }}>
-          <div style={{
-            background: 'linear-gradient(180deg, #000080 0%, #0000a8 100%)',
-            padding: '2px 8px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-          }}>
-            <div style={{
-              width: '12px',
-              height: '12px',
-              background: 'radial-gradient(circle, #ff6b6b 0%, #c0392b 100%)',
-              borderRadius: '50%',
-              border: '1px solid #fff',
-            }} />
-            <div style={{
-              width: '12px',
-              height: '12px',
-              background: 'radial-gradient(circle, #ffd93d 0%, #f39c12 100%)',
-              borderRadius: '50%',
-              border: '1px solid #fff',
-            }} />
-            <div style={{
-              width: '12px',
-              height: '12px',
-              background: 'radial-gradient(circle, #6bcb77 0%, #27ae60 100%)',
-              borderRadius: '50%',
-              border: '1px solid #fff',
-            }} />
-            <span style={{
-              color: '#fff',
-              fontSize: '11px',
-              fontWeight: 'bold',
-              marginLeft: '4px',
-              textShadow: '1px 1px 0 #000',
-            }}>
-              Image Resizer
-            </span>
-          </div>
-          <div style={{ padding: '8px', textAlign: 'center' }}>
-            <h1 style={{
-              fontSize: '24px',
-              fontWeight: 'bold',
-              margin: '0 0 4px 0',
-              color: '#000',
-              textShadow: '1px 1px 0 #fff',
-            }}>
-              🖼️ Hromadná úprava obrázků
-            </h1>
-            <p style={{ color: '#404040', margin: 0 }}>
-              Mac OS 8.1 Style Edition
-            </p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <h1 style={{
+                fontSize: '28px',
+                fontWeight: 600,
+                margin: 0,
+                background: 'linear-gradient(90deg, #fff, #a0a0a0)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
+                🖼️ Image Resizer
+              </h1>
+              <p style={{ color: 'rgba(255,255,255,0.5)', margin: '4px 0 0 0' }}>
+                Hromadná úprava a komprese obrázků
+              </p>
+            </div>
+            {/* Mac window buttons */}
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f57' }} />
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#febc2e' }} />
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#28c840' }} />
+            </div>
           </div>
         </div>
 
-        {/* Settings Window */}
-        <Window title="⚙️ Nastavení" style={{ marginBottom: '16px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        {/* Settings - Modern card */}
+        <div style={{
+          background: 'rgba(255,255,255,0.08)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '16px',
+          padding: '20px',
+          marginBottom: '20px',
+          border: '1px solid rgba(255,255,255,0.1)',
+        }}>
+          <h2 style={{
+            fontSize: '13px',
+            fontWeight: 600,
+            marginBottom: '16px',
+            color: 'rgba(255,255,255,0.6)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
+          }}>
+            ⚙️ Nastavení
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold', color: '#000' }}>
-                Max šířka (px):
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
+                Max šířka (px)
               </label>
               <input
                 type="number"
@@ -283,102 +188,148 @@ export default function Home() {
                 onChange={(e) => setSettings({ ...settings, maxWidth: Number(e.target.value) })}
                 style={{
                   width: '100%',
-                  background: '#fff',
-                  border: '2px solid',
-                  borderColor: '#404040 #dfdfdf #dfdfdf #404040',
-                  padding: '2px 4px',
-                  fontSize: '12px',
-                  fontFamily: 'Geneva, Chicago, sans-serif',
+                  background: 'rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  fontSize: '13px',
+                  color: '#fff',
+                  outline: 'none',
                 }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold', color: '#000' }}>
-                Kvalita (%):
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
+                Kvalita
               </label>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <input
                   type="range"
                   min="10"
                   max="100"
                   value={settings.quality}
                   onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
-                  style={{ width: '100%' }}
+                  style={{
+                    flex: 1,
+                    accentColor: '#007aff',
+                  }}
                 />
-                <span style={{ fontWeight: 'bold', color: '#000', minWidth: '35px' }}>{settings.quality}%</span>
+                <span style={{ 
+                  fontWeight: 600, 
+                  color: '#007aff',
+                  minWidth: '40px',
+                  textAlign: 'right',
+                }}>
+                  {settings.quality}%
+                </span>
               </div>
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold', color: '#000' }}>
-                Formát:
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
+                Formát
               </label>
               <select
                 value={settings.format}
                 onChange={(e) => setSettings({ ...settings, format: e.target.value as any })}
                 style={{
                   width: '100%',
-                  background: '#fff',
-                  border: '2px solid',
-                  borderColor: '#404040 #dfdfdf #dfdfdf #404040',
-                  padding: '2px 4px',
-                  fontSize: '12px',
-                  fontFamily: 'Geneva, Chicago, sans-serif',
+                  background: 'rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  fontSize: '13px',
+                  color: '#fff',
+                  outline: 'none',
                 }}
               >
-                <option value="image/jpeg">JPEG</option>
-                <option value="image/png">PNG</option>
-                <option value="image/webp">WebP</option>
+                <option value="image/jpeg" style={{ background: '#1e1e1e' }}>JPEG</option>
+                <option value="image/png" style={{ background: '#1e1e1e' }}>PNG</option>
+                <option value="image/webp" style={{ background: '#1e1e1e' }}>WebP</option>
               </select>
             </div>
           </div>
-        </Window>
+        </div>
 
-        {/* Dropzone */}
+        {/* Dropzone - Modern */}
         <div
           {...getRootProps()}
           style={{
-            border: '2px dashed',
-            borderColor: isDragActive ? '#000080' : '#404040',
-            background: isDragActive ? '#0000a8' : '#dfdfdf',
-            padding: '32px',
+            background: isDragActive 
+              ? 'rgba(0,122,255,0.2)' 
+              : 'rgba(255,255,255,0.05)',
+            border: `2px dashed ${isDragActive ? '#007aff' : 'rgba(255,255,255,0.15)'}`,
+            borderRadius: '16px',
+            padding: '48px',
             textAlign: 'center',
             cursor: 'pointer',
-            marginBottom: '16px',
-            color: isDragActive ? '#fff' : '#000',
+            marginBottom: '20px',
+            transition: 'all 0.2s ease',
           }}
         >
           <input {...getInputProps()} />
-          <div style={{ fontSize: '32px', marginBottom: '8px' }}>📁</div>
-          <p style={{ fontWeight: 'bold', margin: '0' }}>
-            {isDragActive ? 'PŘETÁHNI SEM FOTKY...' : 'Přetáhni sem fotky nebo klikni'}
+          <div style={{ fontSize: '48px', marginBottom: '12px' }}>📁</div>
+          <p style={{ 
+            fontSize: '15px', 
+            fontWeight: 500,
+            color: isDragActive ? '#007aff' : 'rgba(255,255,255,0.8)',
+            margin: 0,
+          }}>
+            {isDragActive ? 'Přetáhni sem fotky...' : 'Přetáhni sem fotky nebo klikni pro výběr'}
+          </p>
+          <p style={{ 
+            color: 'rgba(255,255,255,0.4)', 
+            margin: '8px 0 0 0',
+            fontSize: '12px',
+          }}>
+            PNG, JPG, WebP • Až 50 souborů
           </p>
         </div>
 
-        {/* Images */}
+        {/* Images Grid - Modern */}
         {images.length > 0 && (
-          <Window title={`📷 Nahrané obrázky (${images.length})`} style={{ marginBottom: '16px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <span style={{ fontWeight: 'bold' }}>{images.length} souborů</span>
-              <Button onClick={clearAll} style={{ color: '#c00' }}>
+          <div style={{
+            background: 'rgba(255,255,255,0.08)',
+            backdropFilter: 'blur(20px)',
+            borderRadius: '16px',
+            padding: '20px',
+            marginBottom: '20px',
+            border: '1px solid rgba(255,255,255,0.1)',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <h2 style={{ 
+                fontSize: '13px', 
+                fontWeight: 600, 
+                color: 'rgba(255,255,255,0.6)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}>
+                📷 Nahrané obrázky ({images.length})
+              </h2>
+              <button
+                onClick={clearAll}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#ff453a',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                }}
+              >
                 Smazat vše
-              </Button>
+              </button>
             </div>
+
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', 
-              gap: '8px',
-              maxHeight: '200px',
-              overflowY: 'auto',
-              background: '#fff',
-              padding: '4px',
-              border: '2px solid',
-              borderColor: '#404040 #dfdfdf #dfdfdf #404040',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', 
+              gap: '12px',
             }}>
               {images.map((img, index) => (
                 <div key={index} style={{ 
-                  border: '1px solid #808080',
-                  padding: '2px',
-                  background: '#fff',
+                  background: 'rgba(0,0,0,0.3)',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
                   position: 'relative',
                 }}>
                   <img
@@ -386,7 +337,7 @@ export default function Home() {
                     alt={img.file.name}
                     style={{ 
                       width: '100%', 
-                      height: '80px', 
+                      height: '100px', 
                       objectFit: 'cover',
                     }}
                   />
@@ -394,59 +345,109 @@ export default function Home() {
                     onClick={() => removeImage(index)}
                     style={{
                       position: 'absolute',
-                      top: '4px',
-                      right: '4px',
-                      width: '16px',
-                      height: '16px',
-                      background: '#c0c0c0',
-                      border: '1px solid',
-                      borderColor: '#fff #404040 #404040 #fff',
+                      top: '6px',
+                      right: '6px',
+                      width: '20px',
+                      height: '20px',
+                      background: 'rgba(0,0,0,0.6)',
+                      border: 'none',
+                      borderRadius: '50%',
+                      color: '#fff',
                       cursor: 'pointer',
-                      fontSize: '10px',
-                      lineHeight: '14px',
-                      textAlign: 'center',
+                      fontSize: '12px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
                     ×
                   </button>
-                  <div style={{ fontSize: '9px', marginTop: '2px', color: '#000' }}>
-                    {formatSize(img.processedSize || img.originalSize)}
-                    {img.processedSize && (
-                      <span style={{ color: '#008000' }}>
-                        {' '}(-{Math.round((1 - img.processedSize / img.originalSize) * 100)}%)
+                  <div style={{ padding: '8px', fontSize: '11px' }}>
+                    <div style={{ 
+                      color: 'rgba(255,255,255,0.6)', 
+                      whiteSpace: 'nowrap', 
+                      overflow: 'hidden', 
+                      textOverflow: 'ellipsis',
+                    }}>
+                      {img.file.name}
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
+                      <span style={{ color: 'rgba(255,255,255,0.5)' }}>
+                        {formatSize(img.originalSize)}
                       </span>
+                      {img.processedSize && (
+                        <span style={{ color: '#30d158' }}>
+                          {formatSize(img.processedSize)}
+                        </span>
+                      )}
+                    </div>
+                    {img.processedSize && (
+                      <div style={{ 
+                        color: '#30d158', 
+                        fontWeight: 600,
+                        marginTop: '2px',
+                      }}>
+                        ↓{Math.round((1 - img.processedSize / img.originalSize) * 100)}%
+                      </div>
                     )}
                   </div>
                 </div>
               ))}
             </div>
-          </Window>
+          </div>
         )}
 
-        {/* Actions */}
-        <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+        {/* Actions - Modern buttons */}
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
           {images.length > 0 && !images[0]?.processed && (
-            <Button primary onClick={processImages} disabled={isProcessing}>
+            <button
+              onClick={processImages}
+              disabled={isProcessing}
+              style={{
+                background: 'linear-gradient(90deg, #007aff, #0051d4)',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '12px 24px',
+                fontSize: '14px',
+                fontWeight: 600,
+                color: '#fff',
+                cursor: isProcessing ? 'not-allowed' : 'pointer',
+                opacity: isProcessing ? 0.6 : 1,
+                boxShadow: '0 4px 14px rgba(0,122,255,0.4)',
+              }}
+            >
               {isProcessing ? '⏳ Zpracovávám...' : '⚡ Zpracovat'}
-            </Button>
+            </button>
           )}
           
           {images[0]?.processed && (
-            <Button primary onClick={downloadAll}>
+            <button
+              onClick={downloadAll}
+              style={{
+                background: 'linear-gradient(90deg, #30d158, #24a338)',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '12px 24px',
+                fontSize: '14px',
+                fontWeight: 600,
+                color: '#fff',
+                cursor: 'pointer',
+                boxShadow: '0 4px 14px rgba(48,209,88,0.4)',
+              }}
+            >
               📥 Stáhnout ZIP ({images.length})
-            </Button>
+            </button>
           )}
         </div>
 
         {/* Footer */}
         <div style={{ 
           textAlign: 'center', 
-          marginTop: '16px', 
-          color: '#fff',
-          fontSize: '10px',
+          marginTop: '32px', 
+          color: 'rgba(255,255,255,0.3)',
+          fontSize: '11px',
         }}>
           <p>Zpracování probíhá lokálně v prohlížeči • Žádné nahrávání na server</p>
-          <p style={{ opacity: 0.7 }}>© 1997-2026 Future Software</p>
         </div>
       </div>
     </div>
