@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Orbitron } from "next/font/google";
 import "./globals.css";
 
-const orbitron = Orbitron({ 
-  subsets: ["latin"],
-  variable: "--font-orbitron",
-});
-
 export const metadata: Metadata = {
-  title: "Future Resizer 2084",
-  description: "Hromadná úprava a komprese obrázků • Future Edition",
+  title: "Image Resizer - Mac OS 8.1",
+  description: "Hromadná úprava obrázků • Mac OS 8.1 Edition",
 };
 
 export default function RootLayout({
@@ -19,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs">
-      <body className={orbitron.variable}>
+      <body>
         {children}
       </body>
     </html>

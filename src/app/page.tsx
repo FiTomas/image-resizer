@@ -113,232 +113,340 @@ export default function Home() {
     return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
   };
 
-  return (
-    <div className="min-h-screen text-white p-4 md:p-8" style={{
-      background: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%)',
-      minHeight: '100vh',
+  // Mac OS 8-9 inspired button
+  const Button = ({ children, onClick, disabled, primary, style = {} }: any) => (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      style={{
+        ...style,
+        background: primary 
+          ? 'linear-gradient(180deg, #0000ba 0%, #000078 100%)'
+          : 'linear-gradient(180deg, #dfdfdf 0%, #a0a0a0 100%)',
+        color: primary ? '#fff' : '#000',
+        border: '1px solid',
+        borderColor: '#fff #808080 #808080 #fff',
+        boxShadow: primary ? 'none' : '1px 1px 0 #808080, -1px -1px 0 #dfdfdf',
+        padding: '4px 16px',
+        fontSize: '12px',
+        fontFamily: 'Geneva, Chicago, sans-serif',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.5 : 1,
+        borderRadius: '4px',
+      }}
+    >
+      {children}
+    </button>
+  );
+
+  // Mac OS 8-9 window
+  const Window = ({ children, title, style = {} }: any) => (
+    <div style={{
+      ...style,
+      background: '#c0c0c0',
+      border: '2px solid',
+      borderColor: '#dfdfdf #404040 #404040 #dfdfdf',
+      boxShadow: '1px 1px 0 #808080',
+      fontFamily: 'Geneva, Chicago, sans-serif',
     }}>
-      {/* Grid lines */}
+      {/* Title bar */}
       <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundImage: `
-          linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px)
-        `,
-        backgroundSize: '50px 50px',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
-      
-      <div className="max-w-6xl mx-auto relative z-10">
+        background: 'linear-gradient(180deg, #000080 0%, #0000a8 100%)',
+        padding: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+      }}>
+        <span style={{
+          width: '12px',
+          height: '12px',
+          background: 'linear-gradient(135deg, #ff6b6b 0%, #c0392b 50%, #ff6b6b 100%)',
+          borderRadius: '50%',
+          display: 'inline-block',
+          border: '1px solid #fff',
+        }} />
+        <span style={{
+          width: '12px',
+          height: '12px',
+          background: 'linear-gradient(135deg, #ffd93d 0%, #f39c12 50%, #ffd93d 100%)',
+          borderRadius: '50%',
+          display: 'inline-block',
+          border: '1px solid #fff',
+        }} />
+        <span style={{
+          width: '12px',
+          height: '12px',
+          background: 'linear-gradient(135deg, #6bcb77 0%, #27ae60 50%, #6bcb77 100%)',
+          borderRadius: '50%',
+          display: 'inline-block',
+          border: '1px solid #fff',
+        }} />
+        <span style={{
+          color: '#fff',
+          fontSize: '11px',
+          fontWeight: 'bold',
+          marginLeft: '4px',
+          textShadow: '1px 1px 0 #000',
+        }}>
+          {title}
+        </span>
+      </div>
+      {/* Content */}
+      <div style={{ padding: '8px' }}>
+        {children}
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      background: '#008080',
+      padding: '20px',
+      fontFamily: 'Geneva, Chicago, sans-serif',
+      fontSize: '12px',
+    }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4" style={{
-            fontFamily: '"Orbitron", sans-serif',
-            textShadow: '0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff',
-            color: '#0ff',
+        <div style={{
+          background: '#c0c0c0',
+          border: '2px solid',
+          borderColor: '#dfdfdf #404040 #404040 #dfdfdf',
+          padding: '2px',
+          marginBottom: '16px',
+        }}>
+          <div style={{
+            background: 'linear-gradient(180deg, #000080 0%, #0000a8 100%)',
+            padding: '2px 8px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
           }}>
-            <span style={{ color: '#f0f' }}>FUTURE</span> RESIZER
-          </h1>
-          <p style={{ color: '#f0f', textShadow: '0 0 10px #f0f' }}>Hromadná úprava obrázků • 2084 Edition</p>
+            <div style={{
+              width: '12px',
+              height: '12px',
+              background: 'radial-gradient(circle, #ff6b6b 0%, #c0392b 100%)',
+              borderRadius: '50%',
+              border: '1px solid #fff',
+            }} />
+            <div style={{
+              width: '12px',
+              height: '12px',
+              background: 'radial-gradient(circle, #ffd93d 0%, #f39c12 100%)',
+              borderRadius: '50%',
+              border: '1px solid #fff',
+            }} />
+            <div style={{
+              width: '12px',
+              height: '12px',
+              background: 'radial-gradient(circle, #6bcb77 0%, #27ae60 100%)',
+              borderRadius: '50%',
+              border: '1px solid #fff',
+            }} />
+            <span style={{
+              color: '#fff',
+              fontSize: '11px',
+              fontWeight: 'bold',
+              marginLeft: '4px',
+              textShadow: '1px 1px 0 #000',
+            }}>
+              Image Resizer
+            </span>
+          </div>
+          <div style={{ padding: '8px', textAlign: 'center' }}>
+            <h1 style={{
+              fontSize: '24px',
+              fontWeight: 'bold',
+              margin: '0 0 4px 0',
+              color: '#000',
+              textShadow: '1px 1px 0 #fff',
+            }}>
+              🖼️ Hromadná úprava obrázků
+            </h1>
+            <p style={{ color: '#404040', margin: 0 }}>
+              Mac OS 8.1 Style Edition
+            </p>
+          </div>
         </div>
 
-        {/* Settings */}
-        <div className="rounded-2xl p-6 mb-8" style={{
-          background: 'rgba(0,255,255,0.05)',
-          border: '1px solid #0ff',
-          boxShadow: '0 0 20px rgba(0,255,255,0.2), inset 0 0 20px rgba(0,255,255,0.05)',
-        }}>
-          <h2 className="text-xl font-semibold mb-4" style={{ color: '#0ff', fontFamily: '"Orbitron", sans-serif' }}>
-            ⚙️ NASTAVENÍ
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Settings Window */}
+        <Window title="⚙️ Nastavení" style={{ marginBottom: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
             <div>
-              <label className="block text-sm mb-2" style={{ color: '#888' }}>
-                MAX ŠÍŘKA (px)
+              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold', color: '#000' }}>
+                Max šířka (px):
               </label>
               <input
                 type="number"
                 value={settings.maxWidth}
                 onChange={(e) => setSettings({ ...settings, maxWidth: Number(e.target.value) })}
-                className="w-full rounded-lg px-4 py-2 outline-none"
                 style={{
-                  background: '#1a1a2e',
-                  border: '1px solid #f0f',
-                  color: '#0ff',
-                  boxShadow: '0 0 10px rgba(255,0,255,0.3)',
+                  width: '100%',
+                  background: '#fff',
+                  border: '2px solid',
+                  borderColor: '#404040 #dfdfdf #dfdfdf #404040',
+                  padding: '2px 4px',
+                  fontSize: '12px',
+                  fontFamily: 'Geneva, Chicago, sans-serif',
                 }}
               />
             </div>
             <div>
-              <label className="block text-sm mb-2" style={{ color: '#888' }}>
-                KVALITA (%)
+              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold', color: '#000' }}>
+                Kvalita (%):
               </label>
-              <input
-                type="range"
-                min="10"
-                max="100"
-                value={settings.quality}
-                onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
-                className="w-full"
-                style={{ accentColor: '#f0f' }}
-              />
-              <span style={{ color: '#f0f', textShadow: '0 0 5px #f0f' }}>{settings.quality}%</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <input
+                  type="range"
+                  min="10"
+                  max="100"
+                  value={settings.quality}
+                  onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
+                  style={{ width: '100%' }}
+                />
+                <span style={{ fontWeight: 'bold', color: '#000', minWidth: '35px' }}>{settings.quality}%</span>
+              </div>
             </div>
             <div>
-              <label className="block text-sm mb-2" style={{ color: '#888' }}>
-                FORMÁT
+              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold', color: '#000' }}>
+                Formát:
               </label>
               <select
                 value={settings.format}
                 onChange={(e) => setSettings({ ...settings, format: e.target.value as any })}
-                className="w-full rounded-lg px-4 py-2 outline-none"
                 style={{
-                  background: '#1a1a2e',
-                  border: '1px solid #0f0',
-                  color: '#0f0',
-                  boxShadow: '0 0 10px rgba(0,255,0,0.3)',
+                  width: '100%',
+                  background: '#fff',
+                  border: '2px solid',
+                  borderColor: '#404040 #dfdfdf #dfdfdf #404040',
+                  padding: '2px 4px',
+                  fontSize: '12px',
+                  fontFamily: 'Geneva, Chicago, sans-serif',
                 }}
               >
-                <option value="image/jpeg" style={{ background: '#1a1a2e' }}>JPEG</option>
-                <option value="image/png" style={{ background: '#1a1a2e' }}>PNG</option>
-                <option value="image/webp" style={{ background: '#1a1a2e' }}>WebP</option>
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/png">PNG</option>
+                <option value="image/webp">WebP</option>
               </select>
             </div>
           </div>
-        </div>
+        </Window>
 
         {/* Dropzone */}
         <div
           {...getRootProps()}
-          className="rounded-2xl p-12 text-center cursor-pointer transition-all mb-8"
           style={{
-            border: `2px dashed ${isDragActive ? '#0ff' : '#f0f'}`,
-            background: isDragActive ? 'rgba(0,255,255,0.1)' : 'rgba(255,0,255,0.05)',
-            boxShadow: isDragActive 
-              ? '0 0 30px rgba(0,255,255,0.5)' 
-              : '0 0 20px rgba(255,0,255,0.2)',
+            border: '2px dashed',
+            borderColor: isDragActive ? '#000080' : '#404040',
+            background: isDragActive ? '#0000a8' : '#dfdfdf',
+            padding: '32px',
+            textAlign: 'center',
+            cursor: 'pointer',
+            marginBottom: '16px',
+            color: isDragActive ? '#fff' : '#000',
           }}
         >
           <input {...getInputProps()} />
-          <div className="text-8xl mb-4">🛸</div>
-          {isDragActive ? (
-            <p className="text-xl" style={{ color: '#0ff', textShadow: '0 0 10px #0ff' }}>
-              PŘETÁHNI SEM FOTKY...
-            </p>
-          ) : (
-            <>
-              <p className="text-xl mb-2" style={{ color: '#f0f' }}>PŘETÁHNI SEM FOTKY</p>
-              <p style={{ color: '#888' }}>nebo klikni pro výběr</p>
-            </>
-          )}
+          <div style={{ fontSize: '32px', marginBottom: '8px' }}>📁</div>
+          <p style={{ fontWeight: 'bold', margin: '0' }}>
+            {isDragActive ? 'PŘETÁHNI SEM FOTKY...' : 'Přetáhni sem fotky nebo klikni'}
+          </p>
         </div>
 
-        {/* Images Grid */}
+        {/* Images */}
         {images.length > 0 && (
-          <div className="rounded-2xl p-6 mb-8" style={{
-            background: 'rgba(255,0,255,0.05)',
-            border: '1px solid #f0f',
-            boxShadow: '0 0 20px rgba(255,0,255,0.2)',
-          }}>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold" style={{ color: '#f0f', fontFamily: '"Orbitron", sans-serif' }}>
-                📷 NAHRANÉ OBRAZKY ({images.length})
-              </h2>
-              <button
-                onClick={clearAll}
-                style={{ color: '#f00', textShadow: '0 0 5px #f00' }}
-                className="hover:underline"
-              >
-                SMAZAT VŠE
-              </button>
+          <Window title={`📷 Nahrané obrázky (${images.length})`} style={{ marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+              <span style={{ fontWeight: 'bold' }}>{images.length} souborů</span>
+              <Button onClick={clearAll} style={{ color: '#c00' }}>
+                Smazat vše
+              </Button>
             </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', 
+              gap: '8px',
+              maxHeight: '200px',
+              overflowY: 'auto',
+              background: '#fff',
+              padding: '4px',
+              border: '2px solid',
+              borderColor: '#404040 #dfdfdf #dfdfdf #404040',
+            }}>
               {images.map((img, index) => (
-                <div key={index} className="relative group">
+                <div key={index} style={{ 
+                  border: '1px solid #808080',
+                  padding: '2px',
+                  background: '#fff',
+                  position: 'relative',
+                }}>
                   <img
                     src={img.processed || img.preview}
                     alt={img.file.name}
-                    className="w-full h-32 object-cover rounded-lg"
-                    style={{
-                      border: '1px solid #0ff',
-                      boxShadow: '0 0 10px rgba(0,255,255,0.3)',
+                    style={{ 
+                      width: '100%', 
+                      height: '80px', 
+                      objectFit: 'cover',
                     }}
                   />
                   <button
                     onClick={() => removeImage(index)}
-                    className="absolute top-2 right-2 rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{
-                      background: '#f00',
-                      boxShadow: '0 0 10px #f00',
+                      position: 'absolute',
+                      top: '4px',
+                      right: '4px',
+                      width: '16px',
+                      height: '16px',
+                      background: '#c0c0c0',
+                      border: '1px solid',
+                      borderColor: '#fff #404040 #404040 #fff',
+                      cursor: 'pointer',
+                      fontSize: '10px',
+                      lineHeight: '14px',
+                      textAlign: 'center',
                     }}
                   >
                     ×
                   </button>
-                  <div className="mt-2 text-xs" style={{ color: '#888' }}>
-                    <div>{img.file.name.slice(0, 15)}...</div>
-                    <div className="flex justify-between">
-                      <span style={{ color: '#0ff' }}>{formatSize(img.originalSize)}</span>
-                      {img.processedSize && (
-                        <span style={{ color: '#0f0' }}>
-                          → {formatSize(img.processedSize)}
-                        </span>
-                      )}
-                    </div>
+                  <div style={{ fontSize: '9px', marginTop: '2px', color: '#000' }}>
+                    {formatSize(img.processedSize || img.originalSize)}
                     {img.processedSize && (
-                      <div style={{ color: '#0f0', textShadow: '0 0 5px #0f0' }}>
-                        {Math.round((1 - img.processedSize / img.originalSize) * 100)}% ÚSPORA
-                      </div>
+                      <span style={{ color: '#008000' }}>
+                        {' '}(-{Math.round((1 - img.processedSize / img.originalSize) * 100)}%)
+                      </span>
                     )}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </Window>
         )}
 
         {/* Actions */}
-        <div className="flex gap-4 justify-center">
+        <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
           {images.length > 0 && !images[0]?.processed && (
-            <button
-              onClick={processImages}
-              disabled={isProcessing}
-              className="px-8 py-3 rounded-xl font-bold transition-all disabled:opacity-50"
-              style={{
-                background: 'linear-gradient(90deg, #0ff, #f0f)',
-                color: '#000',
-                boxShadow: '0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(255,0,255,0.3)',
-                fontFamily: '"Orbitron", sans-serif',
-              }}
-            >
-              {isProcessing ? '⏳ ZPRACOVÁVÁM...' : '⚡ ZPRACOVAT'}
-            </button>
+            <Button primary onClick={processImages} disabled={isProcessing}>
+              {isProcessing ? '⏳ Zpracovávám...' : '⚡ Zpracovat'}
+            </Button>
           )}
           
           {images[0]?.processed && (
-            <button
-              onClick={downloadAll}
-              className="px-8 py-3 rounded-xl font-bold transition-all"
-              style={{
-                background: 'linear-gradient(90deg, #0f0, #0ff)',
-                color: '#000',
-                boxShadow: '0 0 20px rgba(0,255,0,0.5)',
-                fontFamily: '"Orbitron", sans-serif',
-              }}
-            >
-              📥 STÁHNOUT ZIP ({images.length})
-            </button>
+            <Button primary onClick={downloadAll}>
+              📥 Stáhnout ZIP ({images.length})
+            </Button>
           )}
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-12 text-sm" style={{ color: '#666' }}>
-          <p>ZPRACOVÁNÍ LOKÁLNĚ V PROHLÍŽEČI • ŽÁDNÉ NAHRÁVÁNÍ NA SERVER</p>
+        <div style={{ 
+          textAlign: 'center', 
+          marginTop: '16px', 
+          color: '#fff',
+          fontSize: '10px',
+        }}>
+          <p>Zpracování probíhá lokálně v prohlížeči • Žádné nahrávání na server</p>
+          <p style={{ opacity: 0.7 }}>© 1997-2026 Future Software</p>
         </div>
       </div>
     </div>
