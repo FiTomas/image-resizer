@@ -85,7 +85,7 @@ export default function Home() {
   const downloadAll = async () => {
     const zip = new JSZip();
     
-    images.forEach((img, index) => {
+    images.forEach((img) => {
       if (img.processed) {
         const ext = settings.format === 'image/png' ? 'png' : 
                    settings.format === 'image/webp' ? 'webp' : 'jpg';
@@ -116,22 +116,22 @@ export default function Home() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(180deg, #1e3a5f 0%, #0d1b2a 100%)',
+      background: 'linear-gradient(180deg, #1a3d2e 0%, #0f2a1f 100%)',
       padding: '24px',
       fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
       fontSize: '13px',
-      color: '#fff',
+      color: '#ffffff',
     }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         
-        {/* Header - Modern Mac style */}
+        {/* Header */}
         <div style={{
-          background: 'rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.08)',
           backdropFilter: 'blur(20px)',
           borderRadius: '16px',
           padding: '24px',
           marginBottom: '20px',
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid rgba(255,255,255,0.08)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
@@ -139,39 +139,31 @@ export default function Home() {
                 fontSize: '28px',
                 fontWeight: 600,
                 margin: 0,
-                background: 'linear-gradient(90deg, #fff, #a0a0a0)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: '#a8e6cf',
               }}>
                 🖼️ Image Resizer
               </h1>
-              <p style={{ color: 'rgba(255,255,255,0.5)', margin: '4px 0 0 0' }}>
+              <p style={{ color: '#7cb69d', margin: '4px 0 0 0', fontSize: '14px' }}>
                 Hromadná úprava a komprese obrázků
               </p>
-            </div>
-            {/* Mac window buttons */}
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f57' }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#febc2e' }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#28c840' }} />
             </div>
           </div>
         </div>
 
-        {/* Settings - Modern card */}
+        {/* Settings */}
         <div style={{
           background: 'rgba(255,255,255,0.08)',
           backdropFilter: 'blur(20px)',
           borderRadius: '16px',
           padding: '20px',
           marginBottom: '20px',
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid rgba(255,255,255,0.08)',
         }}>
           <h2 style={{
             fontSize: '13px',
             fontWeight: 600,
             marginBottom: '16px',
-            color: 'rgba(255,255,255,0.6)',
+            color: '#7cb69d',
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
           }}>
@@ -179,7 +171,7 @@ export default function Home() {
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda' }}>
                 Max šířka (px)
               </label>
               <input
@@ -189,17 +181,17 @@ export default function Home() {
                 style={{
                   width: '100%',
                   background: 'rgba(0,0,0,0.3)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(168, 230, 207, 0.2)',
                   borderRadius: '8px',
                   padding: '10px 12px',
                   fontSize: '13px',
-                  color: '#fff',
+                  color: '#ffffff',
                   outline: 'none',
                 }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda' }}>
                 Kvalita
               </label>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -211,12 +203,12 @@ export default function Home() {
                   onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
                   style={{
                     flex: 1,
-                    accentColor: '#007aff',
+                    accentColor: '#a8e6cf',
                   }}
                 />
                 <span style={{ 
                   fontWeight: 600, 
-                  color: '#007aff',
+                  color: '#a8e6cf',
                   minWidth: '40px',
                   textAlign: 'right',
                 }}>
@@ -225,7 +217,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda' }}>
                 Formát
               </label>
               <select
@@ -234,30 +226,30 @@ export default function Home() {
                 style={{
                   width: '100%',
                   background: 'rgba(0,0,0,0.3)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(168, 230, 207, 0.2)',
                   borderRadius: '8px',
                   padding: '10px 12px',
                   fontSize: '13px',
-                  color: '#fff',
+                  color: '#ffffff',
                   outline: 'none',
                 }}
               >
-                <option value="image/jpeg" style={{ background: '#1e1e1e' }}>JPEG</option>
-                <option value="image/png" style={{ background: '#1e1e1e' }}>PNG</option>
-                <option value="image/webp" style={{ background: '#1e1e1e' }}>WebP</option>
+                <option value="image/jpeg" style={{ background: '#1a3d2e' }}>JPEG</option>
+                <option value="image/png" style={{ background: '#1a3d2e' }}>PNG</option>
+                <option value="image/webp" style={{ background: '#1a3d2e' }}>WebP</option>
               </select>
             </div>
           </div>
         </div>
 
-        {/* Dropzone - Modern */}
+        {/* Dropzone */}
         <div
           {...getRootProps()}
           style={{
             background: isDragActive 
-              ? 'rgba(0,122,255,0.2)' 
+              ? 'rgba(168, 230, 207, 0.15)' 
               : 'rgba(255,255,255,0.05)',
-            border: `2px dashed ${isDragActive ? '#007aff' : 'rgba(255,255,255,0.15)'}`,
+            border: `2px dashed ${isDragActive ? '#a8e6cf' : 'rgba(168, 230, 207, 0.25)'}`,
             borderRadius: '16px',
             padding: '48px',
             textAlign: 'center',
@@ -271,13 +263,13 @@ export default function Home() {
           <p style={{ 
             fontSize: '15px', 
             fontWeight: 500,
-            color: isDragActive ? '#007aff' : 'rgba(255,255,255,0.8)',
+            color: isDragActive ? '#a8e6cf' : '#d4edda',
             margin: 0,
           }}>
             {isDragActive ? 'Přetáhni sem fotky...' : 'Přetáhni sem fotky nebo klikni pro výběr'}
           </p>
           <p style={{ 
-            color: 'rgba(255,255,255,0.4)', 
+            color: '#7cb69d', 
             margin: '8px 0 0 0',
             fontSize: '12px',
           }}>
@@ -285,7 +277,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Images Grid - Modern */}
+        {/* Images Grid */}
         {images.length > 0 && (
           <div style={{
             background: 'rgba(255,255,255,0.08)',
@@ -293,13 +285,13 @@ export default function Home() {
             borderRadius: '16px',
             padding: '20px',
             marginBottom: '20px',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid rgba(255,255,255,0.08)',
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
               <h2 style={{ 
                 fontSize: '13px', 
                 fontWeight: 600, 
-                color: 'rgba(255,255,255,0.6)',
+                color: '#7cb69d',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
               }}>
@@ -310,7 +302,7 @@ export default function Home() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: '#ff453a',
+                  color: '#ff8a80',
                   cursor: 'pointer',
                   fontSize: '12px',
                   fontWeight: 500,
@@ -364,7 +356,7 @@ export default function Home() {
                   </button>
                   <div style={{ padding: '8px', fontSize: '11px' }}>
                     <div style={{ 
-                      color: 'rgba(255,255,255,0.6)', 
+                      color: '#a8e6cf', 
                       whiteSpace: 'nowrap', 
                       overflow: 'hidden', 
                       textOverflow: 'ellipsis',
@@ -372,18 +364,18 @@ export default function Home() {
                       {img.file.name}
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
-                      <span style={{ color: 'rgba(255,255,255,0.5)' }}>
+                      <span style={{ color: '#7cb69d' }}>
                         {formatSize(img.originalSize)}
                       </span>
                       {img.processedSize && (
-                        <span style={{ color: '#30d158' }}>
+                        <span style={{ color: '#a8e6cf' }}>
                           {formatSize(img.processedSize)}
                         </span>
                       )}
                     </div>
                     {img.processedSize && (
                       <div style={{ 
-                        color: '#30d158', 
+                        color: '#a8e6cf', 
                         fontWeight: 600,
                         marginTop: '2px',
                       }}>
@@ -397,14 +389,14 @@ export default function Home() {
           </div>
         )}
 
-        {/* Actions - Modern buttons */}
+        {/* Actions */}
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
           {images.length > 0 && !images[0]?.processed && (
             <button
               onClick={processImages}
               disabled={isProcessing}
               style={{
-                background: 'linear-gradient(90deg, #007aff, #0051d4)',
+                background: 'linear-gradient(90deg, #4caf50, #2e7d32)',
                 border: 'none',
                 borderRadius: '10px',
                 padding: '12px 24px',
@@ -413,7 +405,7 @@ export default function Home() {
                 color: '#fff',
                 cursor: isProcessing ? 'not-allowed' : 'pointer',
                 opacity: isProcessing ? 0.6 : 1,
-                boxShadow: '0 4px 14px rgba(0,122,255,0.4)',
+                boxShadow: '0 4px 14px rgba(76, 175, 80, 0.4)',
               }}
             >
               {isProcessing ? '⏳ Zpracovávám...' : '⚡ Zpracovat'}
@@ -424,7 +416,7 @@ export default function Home() {
             <button
               onClick={downloadAll}
               style={{
-                background: 'linear-gradient(90deg, #30d158, #24a338)',
+                background: 'linear-gradient(90deg, #4caf50, #2e7d32)',
                 border: 'none',
                 borderRadius: '10px',
                 padding: '12px 24px',
@@ -432,7 +424,7 @@ export default function Home() {
                 fontWeight: 600,
                 color: '#fff',
                 cursor: 'pointer',
-                boxShadow: '0 4px 14px rgba(48,209,88,0.4)',
+                boxShadow: '0 4px 14px rgba(76, 175, 80, 0.4)',
               }}
             >
               📥 Stáhnout ZIP ({images.length})
@@ -444,7 +436,7 @@ export default function Home() {
         <div style={{ 
           textAlign: 'center', 
           marginTop: '32px', 
-          color: 'rgba(255,255,255,0.3)',
+          color: '#5d8a70',
           fontSize: '11px',
         }}>
           <p>Zpracování probíhá lokálně v prohlížeči • Žádné nahrávání na server</p>
