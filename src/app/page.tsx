@@ -124,7 +124,7 @@ export default function Home() {
     }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         
-        {/* Header */}
+        {/* Header - centered */}
         <div style={{
           background: 'rgba(255,255,255,0.08)',
           backdropFilter: 'blur(20px)',
@@ -132,25 +132,22 @@ export default function Home() {
           padding: '24px',
           marginBottom: '20px',
           border: '1px solid rgba(255,255,255,0.08)',
+          textAlign: 'center',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <h1 style={{
-                fontSize: '28px',
-                fontWeight: 600,
-                margin: 0,
-                color: '#a8e6cf',
-              }}>
-                🖼️ Image Resizer
-              </h1>
-              <p style={{ color: '#7cb69d', margin: '4px 0 0 0', fontSize: '14px' }}>
-                Hromadná úprava a komprese obrázků
-              </p>
-            </div>
-          </div>
+          <h1 style={{
+            fontSize: '28px',
+            fontWeight: 600,
+            margin: 0,
+            color: '#a8e6cf',
+          }}>
+            🖼️ Image Resizer
+          </h1>
+          <p style={{ color: '#7cb69d', margin: '8px 0 0 0', fontSize: '14px' }}>
+            Hromadná úprava a komprese obrázků
+          </p>
         </div>
 
-        {/* Settings */}
+        {/* Settings - stacked on mobile */}
         <div style={{
           background: 'rgba(255,255,255,0.08)',
           backdropFilter: 'blur(20px)',
@@ -166,12 +163,19 @@ export default function Home() {
             color: '#7cb69d',
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
+            textAlign: 'center',
           }}>
             ⚙️ Nastavení
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          
+          {/* Responsive: 1 column mobile, 3 columns desktop */}
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '16px',
+          }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
                 Max šířka (px)
               </label>
               <input
@@ -183,15 +187,15 @@ export default function Home() {
                   background: 'rgba(0,0,0,0.3)',
                   border: '1px solid rgba(168, 230, 207, 0.2)',
                   borderRadius: '8px',
-                  padding: '10px 12px',
-                  fontSize: '13px',
+                  padding: '14px 12px',
+                  fontSize: '15px',
                   color: '#ffffff',
                   outline: 'none',
                 }}
               />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
                 Kvalita
               </label>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -211,13 +215,14 @@ export default function Home() {
                   color: '#a8e6cf',
                   minWidth: '40px',
                   textAlign: 'right',
+                  fontSize: '14px',
                 }}>
                   {settings.quality}%
                 </span>
               </div>
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
                 Formát
               </label>
               <select
@@ -228,8 +233,8 @@ export default function Home() {
                   background: 'rgba(0,0,0,0.3)',
                   border: '1px solid rgba(168, 230, 207, 0.2)',
                   borderRadius: '8px',
-                  padding: '10px 12px',
-                  fontSize: '13px',
+                  padding: '14px 12px',
+                  fontSize: '15px',
                   color: '#ffffff',
                   outline: 'none',
                 }}
@@ -399,8 +404,8 @@ export default function Home() {
                 background: 'linear-gradient(90deg, #4caf50, #2e7d32)',
                 border: 'none',
                 borderRadius: '10px',
-                padding: '12px 24px',
-                fontSize: '14px',
+                padding: '14px 28px',
+                fontSize: '15px',
                 fontWeight: 600,
                 color: '#fff',
                 cursor: isProcessing ? 'not-allowed' : 'pointer',
@@ -419,8 +424,8 @@ export default function Home() {
                 background: 'linear-gradient(90deg, #4caf50, #2e7d32)',
                 border: 'none',
                 borderRadius: '10px',
-                padding: '12px 24px',
-                fontSize: '14px',
+                padding: '14px 28px',
+                fontSize: '15px',
                 fontWeight: 600,
                 color: '#fff',
                 cursor: 'pointer',
