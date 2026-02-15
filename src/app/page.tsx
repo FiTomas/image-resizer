@@ -147,7 +147,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Settings - stacked on mobile */}
+        {/* Settings - stacked vertically on mobile */}
         <div style={{
           background: 'rgba(255,255,255,0.08)',
           backdropFilter: 'blur(20px)',
@@ -168,59 +168,32 @@ export default function Home() {
             ⚙️ Nastavení
           </h2>
           
-          {/* Responsive: 1 column mobile, 3 columns desktop */}
+          {/* Vertically stacked - one per line */}
           <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            display: 'flex', 
+            flexDirection: 'column',
             gap: '16px',
           }}>
+            {/* Quality slider */}
             <div>
               <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
-                Max šířka (px)
+                Kvalita: {settings.quality}%
               </label>
               <input
-                type="number"
-                value={settings.maxWidth}
-                onChange={(e) => setSettings({ ...settings, maxWidth: Number(e.target.value) })}
+                type="range"
+                min="10"
+                max="100"
+                value={settings.quality}
+                onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
                 style={{
                   width: '100%',
-                  background: 'rgba(0,0,0,0.3)',
-                  border: '1px solid rgba(168, 230, 207, 0.2)',
-                  borderRadius: '8px',
-                  padding: '14px 12px',
-                  fontSize: '15px',
-                  color: '#ffffff',
-                  outline: 'none',
+                  accentColor: '#a8e6cf',
+                  height: '8px',
                 }}
               />
             </div>
-            <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
-                Kvalita
-              </label>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <input
-                  type="range"
-                  min="10"
-                  max="100"
-                  value={settings.quality}
-                  onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
-                  style={{
-                    flex: 1,
-                    accentColor: '#a8e6cf',
-                  }}
-                />
-                <span style={{ 
-                  fontWeight: 600, 
-                  color: '#a8e6cf',
-                  minWidth: '40px',
-                  textAlign: 'right',
-                  fontSize: '14px',
-                }}>
-                  {settings.quality}%
-                </span>
-              </div>
-            </div>
+
+            {/* Format */}
             <div>
               <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
                 Formát
@@ -243,6 +216,28 @@ export default function Home() {
                 <option value="image/png" style={{ background: '#1a3d2e' }}>PNG</option>
                 <option value="image/webp" style={{ background: '#1a3d2e' }}>WebP</option>
               </select>
+            </div>
+
+            {/* Max width */}
+            <div>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500, color: '#d4edda', fontSize: '14px' }}>
+                Max šířka (px)
+              </label>
+              <input
+                type="number"
+                value={settings.maxWidth}
+                onChange={(e) => setSettings({ ...settings, maxWidth: Number(e.target.value) })}
+                style={{
+                  width: '100%',
+                  background: 'rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(168, 230, 207, 0.2)',
+                  borderRadius: '8px',
+                  padding: '14px 12px',
+                  fontSize: '15px',
+                  color: '#ffffff',
+                  outline: 'none',
+                }}
+              />
             </div>
           </div>
         </div>
