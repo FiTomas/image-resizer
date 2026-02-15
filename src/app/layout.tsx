@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Orbitron } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const orbitron = Orbitron({ 
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-orbitron",
 });
 
 export const metadata: Metadata = {
-  title: "Image Resizer - Hromadná úprava fotek",
-  description: "Hromadná úprava, zmenšování a komprese obrázků pro web",
+  title: "Future Resizer 2084",
+  description: "Hromadná úprava a komprese obrázků • Future Edition",
 };
 
 export default function RootLayout({
@@ -23,10 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="cs">
+      <body className={orbitron.variable}>
         {children}
       </body>
     </html>

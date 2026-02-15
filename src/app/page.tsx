@@ -48,7 +48,6 @@ export default function Home() {
             const canvas = document.createElement('canvas');
             let { width, height } = imgEl;
 
-            // Resize if needed
             if (width > settings.maxWidth) {
               height = (height * settings.maxWidth) / width;
               width = settings.maxWidth;
@@ -60,13 +59,11 @@ export default function Home() {
             const ctx = canvas.getContext('2d');
             ctx?.drawImage(imgEl, 0, 0, width, height);
 
-            // Convert to selected format
             const outputFormat = settings.format === 'image/png' ? 'image/png' : 
                               settings.format === 'image/webp' ? 'image/webp' : 'image/jpeg';
             
             const dataUrl = canvas.toDataURL(outputFormat, settings.quality / 100);
             
-            // Calculate processed size
             const base64 = dataUrl.split(',')[1];
             const processedSize = Math.round((base64.length * 3) / 4);
 
@@ -117,34 +114,69 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white p-4 md:p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen text-white p-4 md:p-8" style={{
+      background: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%)',
+      minHeight: '100vh',
+    }}>
+      {/* Grid lines */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: `
+          linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Image Resizer
+          <h1 className="text-4xl md:text-6xl font-bold mb-4" style={{
+            fontFamily: '"Orbitron", sans-serif',
+            textShadow: '0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff',
+            color: '#0ff',
+          }}>
+            <span style={{ color: '#f0f' }}>FUTURE</span> RESIZER
           </h1>
-          <p className="text-slate-400">Hromadná úprava a komprese obrázků</p>
+          <p style={{ color: '#f0f', textShadow: '0 0 10px #f0f' }}>Hromadná úprava obrázků • 2084 Edition</p>
         </div>
 
         {/* Settings */}
-        <div className="bg-slate-800/50 backdrop-blur rounded-2xl p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">⚙️ Nastavení</h2>
+        <div className="rounded-2xl p-6 mb-8" style={{
+          background: 'rgba(0,255,255,0.05)',
+          border: '1px solid #0ff',
+          boxShadow: '0 0 20px rgba(0,255,255,0.2), inset 0 0 20px rgba(0,255,255,0.05)',
+        }}>
+          <h2 className="text-xl font-semibold mb-4" style={{ color: '#0ff', fontFamily: '"Orbitron", sans-serif' }}>
+            ⚙️ NASTAVENÍ
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm text-slate-400 mb-2">
-                Max šířka (px)
+              <label className="block text-sm mb-2" style={{ color: '#888' }}>
+                MAX ŠÍŘKA (px)
               </label>
               <input
                 type="number"
                 value={settings.maxWidth}
                 onChange={(e) => setSettings({ ...settings, maxWidth: Number(e.target.value) })}
-                className="w-full bg-slate-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full rounded-lg px-4 py-2 outline-none"
+                style={{
+                  background: '#1a1a2e',
+                  border: '1px solid #f0f',
+                  color: '#0ff',
+                  boxShadow: '0 0 10px rgba(255,0,255,0.3)',
+                }}
               />
             </div>
             <div>
-              <label className="block text-sm text-slate-400 mb-2">
-                Kvalita (%)
+              <label className="block text-sm mb-2" style={{ color: '#888' }}>
+                KVALITA (%)
               </label>
               <input
                 type="range"
@@ -153,21 +185,28 @@ export default function Home() {
                 value={settings.quality}
                 onChange={(e) => setSettings({ ...settings, quality: Number(e.target.value) })}
                 className="w-full"
+                style={{ accentColor: '#f0f' }}
               />
-              <span className="text-sm text-slate-400">{settings.quality}%</span>
+              <span style={{ color: '#f0f', textShadow: '0 0 5px #f0f' }}>{settings.quality}%</span>
             </div>
             <div>
-              <label className="block text-sm text-slate-400 mb-2">
-                Formát
+              <label className="block text-sm mb-2" style={{ color: '#888' }}>
+                FORMÁT
               </label>
               <select
                 value={settings.format}
                 onChange={(e) => setSettings({ ...settings, format: e.target.value as any })}
-                className="w-full bg-slate-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full rounded-lg px-4 py-2 outline-none"
+                style={{
+                  background: '#1a1a2e',
+                  border: '1px solid #0f0',
+                  color: '#0f0',
+                  boxShadow: '0 0 10px rgba(0,255,0,0.3)',
+                }}
               >
-                <option value="image/jpeg">JPEG</option>
-                <option value="image/png">PNG</option>
-                <option value="image/webp">WebP</option>
+                <option value="image/jpeg" style={{ background: '#1a1a2e' }}>JPEG</option>
+                <option value="image/png" style={{ background: '#1a1a2e' }}>PNG</option>
+                <option value="image/webp" style={{ background: '#1a1a2e' }}>WebP</option>
               </select>
             </div>
           </div>
@@ -176,36 +215,46 @@ export default function Home() {
         {/* Dropzone */}
         <div
           {...getRootProps()}
-          className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all mb-8
-            ${isDragActive 
-              ? 'border-blue-500 bg-blue-500/20' 
-              : 'border-slate-600 hover:border-slate-500 hover:bg-slate-800/30'
-            }`}
+          className="rounded-2xl p-12 text-center cursor-pointer transition-all mb-8"
+          style={{
+            border: `2px dashed ${isDragActive ? '#0ff' : '#f0f'}`,
+            background: isDragActive ? 'rgba(0,255,255,0.1)' : 'rgba(255,0,255,0.05)',
+            boxShadow: isDragActive 
+              ? '0 0 30px rgba(0,255,255,0.5)' 
+              : '0 0 20px rgba(255,0,255,0.2)',
+          }}
         >
           <input {...getInputProps()} />
-          <div className="text-6xl mb-4">📁</div>
+          <div className="text-8xl mb-4">🛸</div>
           {isDragActive ? (
-            <p className="text-xl">Přetáhni sem fotky...</p>
+            <p className="text-xl" style={{ color: '#0ff', textShadow: '0 0 10px #0ff' }}>
+              PŘETÁHNI SEM FOTKY...
+            </p>
           ) : (
             <>
-              <p className="text-xl mb-2">Přetáhni sem fotky</p>
-              <p className="text-slate-400">nebo klikni pro výběr</p>
+              <p className="text-xl mb-2" style={{ color: '#f0f' }}>PŘETÁHNI SEM FOTKY</p>
+              <p style={{ color: '#888' }}>nebo klikni pro výběr</p>
             </>
           )}
         </div>
 
         {/* Images Grid */}
         {images.length > 0 && (
-          <div className="bg-slate-800/50 backdrop-blur rounded-2xl p-6 mb-8">
+          <div className="rounded-2xl p-6 mb-8" style={{
+            background: 'rgba(255,0,255,0.05)',
+            border: '1px solid #f0f',
+            boxShadow: '0 0 20px rgba(255,0,255,0.2)',
+          }}>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">
-                📷 Nahrané obrázky ({images.length})
+              <h2 className="text-xl font-semibold" style={{ color: '#f0f', fontFamily: '"Orbitron", sans-serif' }}>
+                📷 NAHRANÉ OBRAZKY ({images.length})
               </h2>
               <button
                 onClick={clearAll}
-                className="text-red-400 hover:text-red-300 text-sm"
+                style={{ color: '#f00', textShadow: '0 0 5px #f00' }}
+                className="hover:underline"
               >
-                Smazat vše
+                SMAZAT VŠE
               </button>
             </div>
 
@@ -216,26 +265,34 @@ export default function Home() {
                     src={img.processed || img.preview}
                     alt={img.file.name}
                     className="w-full h-32 object-cover rounded-lg"
+                    style={{
+                      border: '1px solid #0ff',
+                      boxShadow: '0 0 10px rgba(0,255,255,0.3)',
+                    }}
                   />
                   <button
                     onClick={() => removeImage(index)}
-                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute top-2 right-2 rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    style={{
+                      background: '#f00',
+                      boxShadow: '0 0 10px #f00',
+                    }}
                   >
                     ×
                   </button>
-                  <div className="mt-2 text-xs text-slate-400">
-                    <div>{img.file.name.slice(0, 20)}...</div>
+                  <div className="mt-2 text-xs" style={{ color: '#888' }}>
+                    <div>{img.file.name.slice(0, 15)}...</div>
                     <div className="flex justify-between">
-                      <span>{formatSize(img.originalSize)}</span>
+                      <span style={{ color: '#0ff' }}>{formatSize(img.originalSize)}</span>
                       {img.processedSize && (
-                        <span className="text-green-400">
+                        <span style={{ color: '#0f0' }}>
                           → {formatSize(img.processedSize)}
                         </span>
                       )}
                     </div>
                     {img.processedSize && (
-                      <div className="text-green-400">
-                        {Math.round((1 - img.processedSize / img.originalSize) * 100)}% úspora
+                      <div style={{ color: '#0f0', textShadow: '0 0 5px #0f0' }}>
+                        {Math.round((1 - img.processedSize / img.originalSize) * 100)}% ÚSPORA
                       </div>
                     )}
                   </div>
@@ -251,25 +308,37 @@ export default function Home() {
             <button
               onClick={processImages}
               disabled={isProcessing}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-3 rounded-xl font-semibold transition-all disabled:opacity-50"
+              className="px-8 py-3 rounded-xl font-bold transition-all disabled:opacity-50"
+              style={{
+                background: 'linear-gradient(90deg, #0ff, #f0f)',
+                color: '#000',
+                boxShadow: '0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(255,0,255,0.3)',
+                fontFamily: '"Orbitron", sans-serif',
+              }}
             >
-              {isProcessing ? '⏳ Zpracovávám...' : '⚡ Zpracovat'}
+              {isProcessing ? '⏳ ZPRACOVÁVÁM...' : '⚡ ZPRACOVAT'}
             </button>
           )}
           
           {images[0]?.processed && (
             <button
               onClick={downloadAll}
-              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 px-8 py-3 rounded-xl font-semibold transition-all"
+              className="px-8 py-3 rounded-xl font-bold transition-all"
+              style={{
+                background: 'linear-gradient(90deg, #0f0, #0ff)',
+                color: '#000',
+                boxShadow: '0 0 20px rgba(0,255,0,0.5)',
+                fontFamily: '"Orbitron", sans-serif',
+              }}
             >
-              📥 Stáhnout ZIP ({images.length} souborů)
+              📥 STÁHNOUT ZIP ({images.length})
             </button>
           )}
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-12 text-slate-500 text-sm">
-          <p>Zpracování probíhá lokálně v prohlížeči • Žádné nahrávání na server</p>
+        <div className="text-center mt-12 text-sm" style={{ color: '#666' }}>
+          <p>ZPRACOVÁNÍ LOKÁLNĚ V PROHLÍŽEČI • ŽÁDNÉ NAHRÁVÁNÍ NA SERVER</p>
         </div>
       </div>
     </div>
